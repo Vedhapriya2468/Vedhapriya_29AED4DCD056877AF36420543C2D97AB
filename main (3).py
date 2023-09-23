@@ -1,36 +1,26 @@
-class BankAccount:
-    def __init__(self, account_number, account_holder_name):
-        self.__account_number = account_number
-        self.__account_holder_name = account_holder_name
-        self.__account_balance = 0
+class Student:
 
-    def deposit(self, amount):
-        if amount > 0:
-            self.__account_balance += amount
-            print("Deposit successful.")
-        else:
-            print("Invalid amount. Please enter a positive value.")
+   def __init__(self, name, roll_number,  cgpa):
+     self.name = name
+     self.roll_number = roll_number
+     self.cgpa = cgpa
 
-    def withdraw(self, amount):
-        if amount <= self.__account_balance:
-            self.__account_balance -= amount
-            print("Withdrawal successful.")
-        else:
-            print("Insufficient funds. Cannot withdraw specified amount.")
+def sort_students(student_list):
 
-    def display_balance(self):
-        print(f"Account Holder: {self.__account_holder_name}")
-        print(f"Account Number: {self.__account_number}")
-        print(f"Account Balance: {self.__account_balance}")
+  sorted_students = sorted(student_list, 
+                           key=lambda 
+                           student: 
+                           student.cgpa, 
+                           reverse=True)
+  return sorted_students
 
+students = [
+  Student("Raja", "A123", 7.8),
+  Student("Srikanth", "A125", 8.7),
+  Student("Sowmya", "A125", 9.7),
+  Student("Mukesh", "A126", 9.9),
+]
+sorted_students = sort_students(students)
 
-# Create an instance of the BankAccount class
-account = BankAccount("123456789", "John Doe")
-
-# Test deposit functionality
-account.deposit(500)
-account.display_balance()
-
-# Test withdrawal functionality
-account.withdraw(200)
-account.display_balance()
+for student in sorted_students:
+  print("Name: {}, Roll Number: {}, CGPA: {}".format(student.name,student.roll_number, student.cgpa))
